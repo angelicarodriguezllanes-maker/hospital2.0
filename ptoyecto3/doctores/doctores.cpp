@@ -27,14 +27,14 @@ Doctor::Doctor() : id(0), aniosDeExperiencia(0), costoDeLaConsulta(0.0f), // lid
 Doctor::Doctor(int _id, const char* _nombre, const char* _apellido, const char* _cedula)
     : Doctor() // Llamar al constructor  para inicializar todo
 {
-    // Usar setters para aplicar validaciones si es necesario
+    // stters para validar si es necesario 
     setId(_id);
     setNombre(_nombre);
     setApellido(_apellido);
     setCedula(_cedula);
     // El resto se inicializa por defecto y se puede modificar después
 }
-
+//validacion del indice 
 int Doctor::getPacienteID(int indice) const {
     if (indice >= 0 && indice < cantidadPacientes) {
         return pacientesIDs[indice];
@@ -42,10 +42,10 @@ int Doctor::getPacienteID(int indice) const {
     return -1; // Retorna -1 si el índice es inválido
 }
 
-// ===========================================
-//              2. SETTERS CON VALIDACIÓN
-// ===========================================
+ //SETTERS CON VALIDACIONES 
 
+
+//validacion de id 
 void Doctor::setId(int nuevoId) {
     if (nuevoId > 0) {
         id = nuevoId;
@@ -54,16 +54,12 @@ void Doctor::setId(int nuevoId) {
         cerr << "Error (Doctor): ID inválido. Debe ser positivo." << endl;
     }
 }
-
+// Valida cion y asignacion del nombre
 void Doctor::setNombre(const char* nuevoNombre) {
-    if (nuevoNombre && strlen(nuevoNombre) > 0 && strlen(nuevoNombre) < sizeof(nombre)) {
-        // Validación de negocio simple: solo letras (se asume Validaciones::contieneSoloLetras)
-        // if (Validaciones::contieneSoloLetras(nuevoNombre)) {
-            strcpy(nombre, nuevoNombre);
+    if (nuevoNombre && strlen(nuevoNombre) > 0 && strlen(nuevoNombre) < sizeof(nombre)) { //solo letras 
+        
+            strcpy(nombre, nuevoNombre); //copia cadenas en el nuevo nombre 
             fechaModificacion = time(nullptr);
-        // } else {
-        //     cerr << "Error (Doctor): El nombre solo debe contener letras." << endl;
-        // }
     } else {
         cerr << "Error (Doctor): Nombre inválido o muy largo." << endl;
     }
@@ -114,7 +110,7 @@ void Doctor::setCostoDeLaConsulta(float costo) {
         cerr << "Error (Doctor): El costo de la consulta no puede ser negativo." << endl;
     }
 }
-
+//starlen cuenta la cant de caracteres 
 void Doctor::setHorarioAtencion(const char* horario) {
     if (horario && strlen(horario) > 0 && strlen(horario) < sizeof(horarioAtencion)) {
         strcpy(horarioAtencion, horario);
@@ -147,16 +143,11 @@ void Doctor::setDisponible(bool estado) {
     fechaModificacion = time(nullptr);
 }
 
+//validacion de datos 
 
-// ===========================================
-//          3. MÉTODOS DE VALIDACIÓN
-// ===========================================
-
+//valida especialidad
 bool Doctor::especialidadEsValida() const {
-    // Lógica más allá del largo: verificar que la especialidad esté en un catálogo
-    if (strlen(especialidad) == 0) return false;
-    // Se asume una función de utilidad que verifica si la especialidad existe en la lista maestra.
-    // return Validaciones::verificarEspecialidad(especialidad); 
+    if (strlen(especialidad) == 0) return false; // Se asume una función de utilidad que verifica si la especialidad existe en la lista maestra.
     return true; 
 }
 
@@ -170,14 +161,10 @@ bool Doctor::validarDatos() const {
             costoDeLaConsulta >= 0.0f);
 }
 
-// ===========================================
-//          4. GESTIÓN DE RELACIONES
-// ===========================================
 
 bool Doctor::agregarPacienteID(int pacienteID) {
     if (cantidadPacientes < MAX_PACIENTES_ASIGNADOS && pacienteID > 0) {
         // Evitar duplicados antes de agregar (opcional)
-        // for (int i = 0; i < cantidadPacientes; ++i) { if (pacientesIDs[i] == pacienteID) return false; }
         
         pacientesIDs[cantidadPacientes++] = pacienteID;
         fechaModificacion = time(nullptr);
@@ -190,7 +177,7 @@ bool Doctor::eliminarPacienteID(int pacienteID) {
     int* inicio = pacientesIDs;
     int* fin = pacientesIDs + cantidadPacientes;
     
-    // std::remove mueve el elemento a eliminar al final y retorna el nuevo final lógico
+    //remove mueve el elemento a eliminar al final y retorna el nuevo final lógico
     int* nuevo_fin = remove(inicio, fin, pacienteID);
 
     if (nuevo_fin != fin) { // Si algo fue removido
@@ -225,10 +212,6 @@ bool Doctor::eliminarCitaID(int citaID) {
     return false;
 }
 
-// ===========================================
-//          5. MÉTODOS DE PRESENTACIÓN
-// ===========================================
-
 void Doctor::mostrarInformacionBasica() const {
     cout << "ID: " << id
          << " | Nombre: " << nombre << " " << apellido
@@ -246,5 +229,5 @@ void Doctor::mostrarInformacionCompleta() const {
     cout << " - Pacientes Asignados: " << cantidadPacientes << "/" << MAX_PACIENTES_ASIGNADOS << endl;
     cout << " - Citas Agendadas: " << cantidadCitas << "/" << MAX_CITAS_AGENDADAS << endl;
     // TODO: Si implementaste Formatos::formatearFecha, úsalo aquí
-    // cout << " - Última Modificación: " << Formatos::formatearFecha(fechaModificacion) << endl;
+    cout << " - Última Modificación: " << Formatos::formatearFecha(fechaModificacion) << endl;
 }
