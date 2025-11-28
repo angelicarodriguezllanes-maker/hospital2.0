@@ -1,6 +1,7 @@
 #include "Paciente.hpp" // Incluye la declaración de la clase
 #include <iostream> 
 #include <cstring>  
+#include <cctype>
 
 using namespace std; 
 
@@ -73,9 +74,9 @@ void Paciente::setID(int nuevoID) {
 
 // SETTERS PARA CHAR[]: Validan longitud (para evitar overflow)
 void Paciente::setNombre(const char* nuevoNombre) { // portero de seguridad 
-    // Si la cadena de entrada es más corta que el espacio disponible...
-    if (std::strlen(nuevoNombre) < sizeof(nombre)) {
-        std::strcpy(nombre, nuevoNombre); // Se copia la cadena
+
+    if (std::strlen(nuevoNombre) < sizeof(nombre)) { // valias tamano
+        std::strcpy(nombre, nuevoNombre); // mide
     } else {
         cerr << "Error: Nombre demasiado largo. No asignado." << endl;
     }
@@ -124,7 +125,7 @@ void Paciente::setDireccion(const char* nuevaDireccion) {
     }
 }
 
-void Paciente::setEmail(const char* nuevoEmail) {
+void Paciente::setEmail(const char* nuevoEmail) { //mide lo qeu entra ey el espacio 
     if (std::strlen(nuevoEmail) < sizeof(email)) {
         // TODO: Validar formato de email (@, .)
         std::strcpy(email, nuevoEmail);
@@ -133,7 +134,7 @@ void Paciente::setEmail(const char* nuevoEmail) {
     }
 }
 
-// SETTERS PARA TIPOS SIMPLES: Validan el rango o el valor
+
 void Paciente::setEdad(int nuevaEdad) {
     // Validación de rango lógico
     if (nuevaEdad >= 0 && nuevaEdad <= 120) {
