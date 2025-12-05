@@ -19,13 +19,12 @@ OperadorPacientes::OperadorPacientes()
 OperadorPacientes::~OperadorPacientes() {
     delete[] listaPacientes_; 
 }
-
-// Verifica si el array está lleno y lo expande
-void OperadorPacientes::verificarYExpandir() {
+//mundanza
+void OperadorPacientes::verificarYExpandir() { //comprueba si el numero de pacientes ha llegafo al limite y lo expande a una nueva caja 
     // Si la cantidad actual es igual o mayor a la capacidad máxima, expandimos.
-    if (cantidadActual_ >= capacidadMaxima_) {
+    if (cantidadActual_ >= capacidadMaxima_) { 
         // 1. Calcula la nueva capacidad (ej: 10 * 1.5 = 15)
-        int nuevaCapacidad = static_cast<int>(floor(capacidadMaxima_ * FACTOR_CRECIMIENTO));
+        int nuevaCapacidad = static_cast<int>(floor(capacidadMaxima_ * FACTOR_CRECIMIENTO)); //calcula un nuevo tamano
         
         // 2. Asigna un nuevo bloque de memoria más grande
         Paciente* nuevoArray = new Paciente[nuevaCapacidad];
@@ -43,32 +42,26 @@ void OperadorPacientes::verificarYExpandir() {
         listaPacientes_ = nuevoArray;
         capacidadMaxima_ = nuevaCapacidad;
         
-        cout << "📢 Array de pacientes expandido a " << nuevaCapacidad << " de capacidad." << endl;
+        cout << "Array de pacientes expandido a " << nuevaCapacidad << " de capacidad." << endl;
     }
 }
 
-// --------------------------------------------------------------------------------
-// Auxiliar: Genera el siguiente ID secuencial
-// --------------------------------------------------------------------------------
-int OperadorPacientes::getSiguienteID() {
+// id secunencial
+int OperadorPacientes::getSiguienteID() { //accede al publico y le asigna un id 
     return ++ultimoIDAsignado_;
 }
 
-// --------------------------------------------------------------------------------
-// CRUD: Agregar un Paciente
-// --------------------------------------------------------------------------------
-bool OperadorPacientes::agregarPaciente(const Paciente& nuevoPaciente) {
+//agrega un paciente 
+bool OperadorPacientes::agregarPaciente(const Paciente& nuevoPaciente) { //llama al paciente y hace que el gestor de archivos se guarde 
     
-    // 1. Verifica y expande la capacidad si es necesario
-    verificarYExpandir();
+    verificarYExpandir();// 1. Verifica y expande la capacidad si es necesario
     
-    // 2. Trabajamos con una copia mutable
-    Paciente p = nuevoPaciente;
+    Paciente p = nuevoPaciente;// 2. Trabajamos con una copia que se puede cambiar 
     
     // 3. Asignar ID y fechas
     if (p.id == -1) {
         p.id = getSiguienteID();
-    } // Se asume que el manejo de ID preexistente está bien si no es -1
+    } // si la condicion se cumple se llama al siguieten paciente id 
     
     time_t now = time(0);
     p.fechaCreacion = now;
@@ -78,15 +71,13 @@ bool OperadorPacientes::agregarPaciente(const Paciente& nuevoPaciente) {
     listaPacientes_[cantidadActual_] = p;
     cantidadActual_++;
     
-    cout << "✅ Paciente '" << p.nombre << " " << p.apellido 
+    cout << "Paciente '" << p.nombre << " " << p.apellido 
          << "' agregado con ID: " << p.id << endl;
          
     return true;
 }
 
-// --------------------------------------------------------------------------------
-// CRUD: Buscar Paciente por ID
-// --------------------------------------------------------------------------------
+//busca paciente por id 
 Paciente* OperadorPacientes::buscarPacientePorID(int id) {
     
     for (int i = 0; i < cantidadActual_; ++i) {
@@ -98,9 +89,7 @@ Paciente* OperadorPacientes::buscarPacientePorID(int id) {
     return nullptr; 
 }
 
-// --------------------------------------------------------------------------------
-// CRUD: Actualizar Paciente
-// --------------------------------------------------------------------------------
+// actualiza paciente 
 bool OperadorPacientes::actualizarPaciente(const Paciente& pacienteModificado) {
     
     Paciente* pExistente = buscarPacientePorID(pacienteModificado.id);
@@ -115,18 +104,15 @@ bool OperadorPacientes::actualizarPaciente(const Paciente& pacienteModificado) {
         pExistente->fechaCreacion = fechaCreacionOriginal;
         pExistente->fechaModificacion = time(0);
         
-        cout << "🔄 Paciente ID " << pExistente->id << " actualizado correctamente." << endl;
+        cout << " Paciente ID " << pExistente->id << " actualizado correctamente." << endl;
         return true;
     }
     
-    cout << "❌ Error: No se puede actualizar. Paciente ID " << pacienteModificado.id << " no encontrado." << endl;
+    cout << " Error: No se puede actualizar. Paciente ID " << pacienteModificado.id << " no encontrado." << endl;
     return false;
 }
 
-// --------------------------------------------------------------------------------
-// CRUD: Eliminar Paciente (Soft Delete)
-// --------------------------------------------------------------------------------
-bool OperadorPacientes::eliminarPaciente(int id) {
+//elimina pacientes 
     
     Paciente* p = buscarPacientePorID(id);
     
@@ -137,21 +123,18 @@ bool OperadorPacientes::eliminarPaciente(int id) {
             p->eliminado = true;
             p->fechaModificacion = time(0);
             
-            cout << "🗑️ Paciente ID " << id << " eliminado (Soft Delete)." << endl;
+            cout << " Paciente ID " << id << " eliminado ." << endl;
             return true;
         } else {
-            cout << "⚠️ Advertencia: Paciente ID " << id << " ya estaba inactivo." << endl;
+            cout << "Advertencia: Paciente ID " << id << " ya estaba inactivo." << endl;
             return false;
         }
     }
     
-    cout << "❌ Error: Paciente ID " << id << " no encontrado para eliminar." << endl;
+    cout << " Error: Paciente ID " << id << " no encontrado para eliminar." << endl;
     return false;
-}
 
-// --------------------------------------------------------------------------------
-// Auxiliar: Listar todos los pacientes activos
-// --------------------------------------------------------------------------------
+//lista pacientes activos 
 void OperadorPacientes::listarActivos() const {
     if (cantidadActual_ == 0) {
         cout << "La lista de pacientes está vacía." << endl;
