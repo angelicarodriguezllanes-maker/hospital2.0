@@ -39,7 +39,7 @@ public:
     // Constructor con parámetros principales 
     Doctor(int _id, const char* _nombre, const char* _apellido, const char* _cedula);
 
-    // GETTERS (SIEMPRE const) 
+    // GETTERS (SIEMPRE const) , permite leer el valor de una variable de privada de ese objeto 
     int getId() const { return id; }
     const char* getNombre() const { return nombre; }
     const char* getApellido() const { return apellido; }
@@ -60,7 +60,7 @@ public:
     time_t getFechaModificacion() const { return fechaModificacion; }
 
 
-    // SETTERS 
+    // SETTERS, modifica una variable privada
     void setId(int nuevoId);
     void setNombre(const char* nuevoNombre);
     void setApellido(const char* nuevoApellido);
