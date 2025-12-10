@@ -3,3 +3,4 @@
 //getters: Un getter es una función pública dentro de una clase que permite leer el valor de una variable privada de ese objeto.
 
 // setters: Un setter es una función pública dentro de una clase que permite modificar el valor de una variable privada de ese objeto.
+// setter escritura, getter lectura

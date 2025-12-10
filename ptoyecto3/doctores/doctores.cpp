@@ -4,7 +4,7 @@
 #include <cmath> 
 
 // llama a las demas bibliotecas para utilizar sus funciones 
-#include "../utilidades/Validaciones.hpp"  //hoja de ruta en el mismo codigo 
+#include "../utilidades/Validaciones.hpp"  //llama a las validaciones del mismo codigo para utilizarlas
 
 using namespace std;
 
@@ -20,19 +20,19 @@ Doctor::Doctor() : id(0), aniosDeExperiencia(0), costoDeLaConsulta(0.0f), // lid
     fechaModificacion = fechaCreacion;
 
     // Inicializar arrays de IDs a 0
-    for (int i = 0; i < MAX_PACIENTES_ASIGNADOS; ++i) pacientesIDs[i] = 0;
+    for (int i = 0; i < MAX_PACIENTES_ASIGNADOS; ++i) pacientesIDs[i] = 0;//garantiza que al iniciar el programa toas las listas de id esten en 0
     for (int i = 0; i < MAX_CITAS_AGENDADAS; ++i) citasIDs[i] = 0;
 }
-
-Doctor::Doctor(int _id, const char* _nombre, const char* _apellido, const char* _cedula)
-    : Doctor() // Llamar al constructor  para inicializar todo
+Doctor::Doctor(int _
+    id, const char* _nombre, const char* _apellido, const char* _cedula)
+    : Doctor() // Llamar al constructor (doctor)  para inicializar todo
 {
     // stters para validar si es necesario 
     setId(_id);
     setNombre(_nombre);
     setApellido(_apellido);
     setCedula(_cedula);
-    // El resto se inicializa por defecto y se puede modificar después
+    // El resto se inicializa por defecto y se puede modificar después (predefinidos)
 }
 //validacion del indice 
 int Doctor::getPacienteID(int indice) const {
@@ -43,8 +43,6 @@ int Doctor::getPacienteID(int indice) const {
 }
 
  //SETTERS CON VALIDACIONES 
-
-
 //validacion de id 
 void Doctor::setId(int nuevoId) {
     if (nuevoId > 0) {
@@ -54,14 +52,13 @@ void Doctor::setId(int nuevoId) {
         cerr << "Error (Doctor): ID inválido. Debe ser positivo." << endl;
     }
 }
-// Valida cion y asignacion del nombre
+// Validacion y asignacion del nombre
 void Doctor::setNombre(const char* nuevoNombre) {
-    if (nuevoNombre && strlen(nuevoNombre) > 0 && strlen(nuevoNombre) < sizeof(nombre)) { //solo letras 
-        
+    if (nuevoNombre && strlen(nuevoNombre) > 0 && strlen(nuevoNombre) < sizeof(nombre)) { //verfica que solaemten tenga letras y no sea mas largp que el espacio
             strcpy(nombre, nuevoNombre); //copia cadenas en el nuevo nombre 
-            fechaModificacion = time(nullptr);
+            fechaModificacion = time(nullptr);//anota las flechas y la hora actual
     } else {
-        cerr << "Error (Doctor): Nombre inválido o muy largo." << endl;
+        cerr << "Error (Doctor): Nombre inválido o muy largo." << endl;//se utiliza para imprimir errores
     }
 }
 
@@ -91,7 +88,6 @@ void Doctor::setEspecialidad(const char* nuevaEspecialidad) {
         cerr << "Error (Doctor): Especialidad inválida o muy larga." << endl;
     }
 }
-
 void Doctor::setAniosDeExperiencia(int anios) {
     if (anios >= 0 && anios <= 70) { 
         aniosDeExperiencia = anios;

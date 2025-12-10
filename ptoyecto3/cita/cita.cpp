@@ -1,5 +1,5 @@
 #include "Cita.hpp"
-#include <cstring> // Necesario para funciones como strncpy
+#include <cstring> // permite que funcione strncpy
 
 // Constructor (Inicializa todos los atributos)
 Cita::Cita(int idCita, int idPaciente, int idDoctor, 
@@ -7,9 +7,8 @@ Cita::Cita(int idCita, int idPaciente, int idDoctor,
            const char* motivo, bool cancelada) 
     : idCita(idCita), idPaciente(idPaciente), idDoctor(idDoctor), cancelada(cancelada) {
     
-    // Usamos strncpy para copiar cadenas de caracteres (char arrays) de forma segura
-    // Fecha (11 bytes: 10 caracteres + '\0')
-    strncpy(this->fecha, fecha, 10);
+    // strncpy para copiar cadenas de caracteres 
+    strncpy(this->fecha, fecha, 10);//copia los 10 caracteres y los guarda en fecha 
     this->fecha[10] = '\0';
 
     // Hora (6 bytes: 5 caracteres + '\0')
@@ -21,10 +20,7 @@ Cita::Cita(int idCita, int idPaciente, int idDoctor,
     this->motivo[99] = '\0';
 }
 
-// ------------------------------------
-// Getters (Solo devuelven el valor del atributo)
-// ------------------------------------
-
+// Getters, obtiene o recupera el alor de una vriable privada
 int Cita::getIdCita() const {
     return idCita;
 }
@@ -53,9 +49,7 @@ bool Cita::estaCancelada() const {
     return cancelada;
 }
 
-// ------------------------------------
-// Setters (Permiten modificar el valor del atributo de forma controlada)
-// ------------------------------------
+//sett solamente modifica la ariable priada
 
 void Cita::setIdCita(int id) {
     this->idCita = id;

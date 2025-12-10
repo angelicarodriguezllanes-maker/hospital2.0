@@ -6,23 +6,22 @@
 using namespace std;
 
 class Cita {
-private:
-    // Atributos privados (Encapsulamiento)
+private://pepa del agucate, el usario no puede cambiar lo qeu esta adentro
     int idCita;
-    int idPaciente; // Clave foránea para relacionar con Paciente
-    int idDoctor;   // Clave foránea para relacionar con Doctor
-    char fecha[11]; // Formato "DD/MM/AAAA\0"
-    char hora[6];   // Formato "HH:MM\0"
+    int idPaciente; 
+    int idDoctor;   
+    char fecha[11]; 
+    char hora[6];   
     char motivo[100];
-    bool cancelada; // Para marcar si la cita fue cancelada/eliminada
+    bool cancelada; //  cita  cancelada/eliminada
 
-public:
-    // Constructor
+public: //el la concha, el usuario la puede cambiar directamente sin las reglas de la clase
+    // Constructor, prepara al objeto, despues de ser creador dandole alores parra utilizarlo
     Cita(int idCita = 0, int idPaciente = 0, int idDoctor = 0, 
          const char* fecha = "", const char* hora = "", 
          const char* motivo = "", bool cancelada = false);
 
-    // Getters (Métodos de Acceso)
+    // Getters (Métodos de Acceso), obtiene o recupera el alor de una vriable privada
     int getIdCita() const;
     int getIdPaciente() const;
     int getIdDoctor() const;
@@ -31,17 +30,14 @@ public:
     const char* getMotivo() const;
     bool estaCancelada() const;
 
-    // Setters (Métodos de Modificación)
+    // Setters (Métodos de Modificación)solamente modifica la ariable priada
     void setIdCita(int id);
     void setIdPaciente(int id);
     void setIdDoctor(int id);
     void setFecha(const char* nuevaFecha);
     void setHora(const char* nuevaHora);
     void setMotivo(const char* nuevoMotivo);
-    void setCancelada(bool estado);
-
-    // Método de Negocio (Opcional, puede ir en OperacionesCitas)
-    // bool validarDatos() const; 
+    void setCancelada(bool estado)
 };
 
-#endif // CITA_HPP
+#endif 
