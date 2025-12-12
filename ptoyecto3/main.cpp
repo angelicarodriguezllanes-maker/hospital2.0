@@ -1,11 +1,11 @@
-
 #include <iostream>
 #include <limits>    
 #include <cstdlib>  
 
+#include "utilidades/Validaciones.hpp"
 #include "hospital/Hospital.hpp"
-#include "persistencia/constante.hpp"
-#include "persistencia/gestorarchivos.hpp" 
+#include "hola/constante.hpp"
+#include "hola/gestorarchivos.hpp" 
 #include "utilidades/Validaciones.hpp" // Para limpiar el buffer
 
 
@@ -70,10 +70,10 @@ void menuPrincipal(Hospital& hospital) {
         cout << "Seleccione una opción: ";
 
         if (!(cin >> opcion)) {
-            Validaciones::limpiarBufferEntrada();
+            validaciones::limpiarBufferEntrada();
             opcion = -1; // Opción inválida
         } else {
-            Validaciones::limpiarBufferEntrada();
+            validaciones::limpiarBufferEntrada();
         }
 
         switch (opcion) {
@@ -111,7 +111,7 @@ void menuPacientes(Hospital& hospital) {
         cout << "Seleccione una opción: ";
 
         if (!(cin >> opcion)) {
-            Validaciones::limpiarBufferEntrada();
+            validaciones::limpiarBufferEntrada();
             opcion = -1; 
         } else {
             Validaciones::limpiarBufferEntrada();

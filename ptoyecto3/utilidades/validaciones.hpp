@@ -1,28 +1,57 @@
 #ifndef VALIDACIONES_HPP
 #define VALIDACIONES_HPP
 
-#include <string>
+#include <iostream>
+#include <ctime> // Para funciones de tiempo si las necesitas
 
-using namespace std;
-
-class Validaciones {
+class validaciones {
 public:
-    // 1. Validación de rangos numéricos genéricos
-    static bool validarRangoEntero(int valor, int min, int max);
+    // ------------------------------------------------------------------
+    // Métodos para validación de datos de Doctor y Paciente (AÑADIR ESTO)
+    // ------------------------------------------------------------------
 
-    // 2. Validación de longitud de cadenas (Ej: nombre, cedula)
-    static bool validarLongitudCadena(const string& cadena, size_t min, size_t max);
+    /**
+     * @brief Valida el formato y la estructura de una cédula/DNI.
+     * @param cedula Cadena de caracteres a validar.
+     * @return true si es válida, false en caso contrario.
+     */
+    static bool validarCedula(const char* cedula);
 
-    // 3. Validación específica de formato (Ej: fechas, horas)
-    static bool validarFormatoFecha(const char* fecha); // DD/MM/AAAA
-    static bool validarFormatoHora(const char* hora);   // HH:MM
+    /**
+     * @brief Valida el formato y la longitud de un número de teléfono.
+     * @param telefono Cadena de caracteres a validar.
+     * @return true si es válido, false en caso contrario.
+     */
+    static bool validarTelefono(const char* telefono);
 
-    // 4. Utilidad para limpiar el buffer de entrada (común en C++)
-    static void limpiarBufferEntrada();
+    /**
+     * @brief Valida el formato básico de una dirección de correo electrónico.
+     * @param email Cadena de caracteres a validar.
+     * @return true si es válido, false en caso contrario.
+     */
+    static bool validarEmail(const char* email);
+
+    // ------------------------------------------------------------------
+    // Otros métodos estáticos (Mantén si ya existían)
+    // ------------------------------------------------------------------
+
+    // Ejemplo: Si tienes validaciones de fecha/hora que mencionaste antes
+    static bool validarFormatoFecha(const char* fecha);
+    static bool validarFormatoHora(const char* hora);
     
-private:
-    // Clase estática, el constructor es privado/eliminado
-    Validaciones() = delete; 
+    // Función genérica para leer enteros
+    static int leerEntero(const char* mensaje);
+
+    // Función genérica para leer flotantes
+    static float leerFlotante(const char* mensaje);
+
+    // Asegúrate de que todas tus validaciones genéricas estén aquí...
+    
 };
 
-#endif // VALIDACIONES_HPP, cierra las estructuras condicionales
+// ------------------------------------------------------------------
+// Nota: La implementación (código real) de estas funciones 
+// debe ir en utilidades/Validaciones.cpp
+// ------------------------------------------------------------------
+
+#endif // VALIDACIONES_HPP

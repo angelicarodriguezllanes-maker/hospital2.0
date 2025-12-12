@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstring>
 #include <cmath> // Para floor
-
+#include "pacientes/pacientes.hpp"
 using namespace std; 
 
 //constructor, lee da vida al proyecto

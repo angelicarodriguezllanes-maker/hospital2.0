@@ -2,6 +2,10 @@
 #include <iostream>
 #include <algorithm> // tiene funciones y procesa datos  Para std::remove
 #include <cmath> 
+#include <iomanip>
+#include "../utilidades/Validaciones.hpp"
+
+
 
 // llama a las demas bibliotecas para utilizar sus funciones 
 #include "../utilidades/Validaciones.hpp"  //llama a las validaciones del mismo codigo para utilizarlas
@@ -23,12 +27,11 @@ Doctor::Doctor() : id(0), aniosDeExperiencia(0), costoDeLaConsulta(0.0f), // lid
     for (int i = 0; i < MAX_PACIENTES_ASIGNADOS; ++i) pacientesIDs[i] = 0;//garantiza que al iniciar el programa toas las listas de id esten en 0
     for (int i = 0; i < MAX_CITAS_AGENDADAS; ++i) citasIDs[i] = 0;
 }
-Doctor::Doctor(int _
-    id, const char* _nombre, const char* _apellido, const char* _cedula)
+Doctor::Doctor(int id, const char* _nombre, const char* _apellido, const char* _cedula)
     : Doctor() // Llamar al constructor (doctor)  para inicializar todo
 {
     // stters para validar si es necesario 
-    setId(_id);
+    setId(id);
     setNombre(_nombre);
     setApellido(_apellido);
     setCedula(_cedula);
@@ -152,7 +155,7 @@ bool Doctor::validarDatos() const {
     return (id > 0 &&
             strlen(nombre) > 0 &&
             strlen(apellido) > 0 &&
-            cedulaEsValida() && 
+           bool cedulaEsValida() && 
             especialidadEsValida() &&
             costoDeLaConsulta >= 0.0f);
 }
@@ -225,5 +228,5 @@ void Doctor::mostrarInformacionCompleta() const {
     cout << " - Pacientes Asignados: " << cantidadPacientes << "/" << MAX_PACIENTES_ASIGNADOS << endl;
     cout << " - Citas Agendadas: " << cantidadCitas << "/" << MAX_CITAS_AGENDADAS << endl;
     // TODO: Si implementaste Formatos::formatearFecha, úsalo aquí
-    cout << " - Última Modificación: " << Formatos::formatearFecha(fechaModificacion) << endl;
+  //  cout << " - Última Modificación: " << Formatos::formatearFecha(fechaModificacion) << endl;
 }

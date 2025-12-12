@@ -1,6 +1,7 @@
 #ifndef PACIENTE_HPP // pregunta si aun no se ahan creado los pacientes 
 #define PACIENTE_HPP // si no se han creado va al contenido 
-
+#include <cstddef>
+#include <iostream>
 class Paciente { //medicamento y funciona como un agucate 
 private: //locker, PEPITA DEL AGUCATE                   
      int id; 
@@ -56,7 +57,11 @@ public: // pulpa del agucate
     cout << "EMAIL: " << email << std::endl;
     cout << "---------------------------------------" << std::endl;
 }
-    
+    int getID() const;
+
+
+void setID(int nuevoID);
+Paciente(int id, const char* n, const char* a, const char* c, int e, char s, const char* ts, const char* tel, const char* dir, const char* email);
     // Método auxiliar para el GestorArchivos o planificador de tareas 
     static size_t obtenerTamano(); //devuelve tamano o cantidad 
 };

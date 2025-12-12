@@ -1,6 +1,6 @@
 #ifndef OPERADORPACIENTES_HPP
 #define OPERADORPACIENTES_HPP
-
+#include "../pacientes/pacientes.hpp"
 #include <string> 
 #include <ctime>
 #include <cstring> 
@@ -17,7 +17,7 @@ public: //legibilidad y usabilidad
     // Destructor: escoba de limpieza
 
     // Métodos Principales
-    bool agregarPaciente(const Paciente& nuevoPaciente); //crea un nuevo registro de pacientes en el sistena 
+    bool agregarpaciente(const Paciente& nuevoPaciente); //crea un nuevo registro de pacientes en el sistena 
     Paciente* buscarPacientePorID(int id); //consulta unn id especifico 
     bool actualizarPaciente(const Paciente& pacienteModificado); //actualiza los pacientes ya existentes
     bool eliminarPaciente(int id); //eliminar paciente 

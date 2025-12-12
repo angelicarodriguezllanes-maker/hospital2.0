@@ -2,6 +2,7 @@
 #include <iostream> 
 #include <cstring>  
 #include <cctype>
+#include <cstddef>
 
 using namespace std; 
 
@@ -37,18 +38,6 @@ Paciente::Paciente(int id, const char* n, const char* a, const char* c, int e,
     setEmail(em);
 }
 
-// Método de Presentación
-void Paciente::mostrarInformacionBasica() const {
-    cout << "---------------------------------------" << endl;
-    cout << "         DATOS DEL PACIENTE (" << id << ") " << endl;
-    cout << "---------------------------------------" << endl;
-    cout << "Nombre: " << nombre << " " << apellido << endl;
-    cout << "Cédula: " << cedula << " | Edad: " << edad << " | Sexo: " << sexo << endl;
-    cout << "Teléfono: " << telefono << " | Tipo Sangre: " << tipoSangre << endl;
-    cout << "Email: " << email << endl;
-    cout << "Dirección: " << direccion << endl;
-    cout << "---------------------------------------" << endl;
-}
 
 // GETTERS (Métodos de Lectura)
 int Paciente::getID() const { return id; } 
