@@ -30,7 +30,7 @@ public:
     Hospital();
     // 2. Constructor con parámetros, permite inicializar con otros valores
     Hospital(const char* nombre, const char* direccion, const char* telefono);
-
+    void mostrarEstadisticas();
     // GETTERS (Métodos de Lectura const)
     const char* getNombre() const;
     const char* getDireccion() const;

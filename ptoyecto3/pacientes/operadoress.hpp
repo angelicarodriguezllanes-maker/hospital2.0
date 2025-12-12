@@ -1,14 +1,13 @@
 #ifndef OPERACIONES_PACIENTES_HPP
 #define OPERACIONES_PACIENTES_HPP
 
-// Incluimos la clase Hospital para actualizar sus contadores de IDs
-#include "../hospital/Hospital.hpp" 
-// Incluimos la clase Paciente para poder crear y modificar pacientes
-#include "pacientes.hpp" 
+#include "../hospital/Hospital.hpp" // Asegúrate de que esta ruta sea correcta
 
-// Declaraciones de funciones de lógica de negocio
-void registrarPaciente(Hospital& hospital);
-Paciente buscarPacientePorID();
-// Declarar el resto de operaciones CRque UD y flujos (modificar, eliminar, listar...)
+// Declaraciones de las funciones:
+void registrarPaciente(Hospital& hospital); // Si requiere el objeto Hospital (como el case 1)
+void modificarPaciente();
+void buscarPaciente();
+void listarPacientes();
+void eliminarPaciente();
 
-#endif
+#endif // OPERACIONES_PACIENTES_HPP
