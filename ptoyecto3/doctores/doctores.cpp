@@ -62,7 +62,7 @@ void Doctor::setNombre(const char* nuevoNombre) {
     }
 }
 
-void Doctor::setApellido(const char* nuevoApellido) {
+void Doctor::setApellido(const char* nuevoApellido) { //si el nuevo aprellido es valido, se guarda y se registra la hora de modificacion
     if (nuevoApellido && strlen(nuevoApellido) > 0 && strlen(nuevoApellido) < sizeof(apellido)) {
         strcpy(apellido, nuevoApellido);
         fechaModificacion = time(nullptr);
@@ -71,7 +71,7 @@ void Doctor::setApellido(const char* nuevoApellido) {
     }
 }
 
-void Doctor::setCedula(const char* nuevaCedula) {
+void Doctor::setCedula(const char* nuevaCedula) { //hace lo mismo pero con cedula 
     if (Validaciones::validarCedula(nuevaCedula) && strlen(nuevaCedula) < sizeof(cedula)) {
         strcpy(cedula, nuevaCedula);
         fechaModificacion = time(nullptr);
@@ -80,7 +80,7 @@ void Doctor::setCedula(const char* nuevaCedula) {
     }
 }
 
-void Doctor::setEspecialidad(const char* nuevaEspecialidad) {
+void Doctor::setEspecialidad(const char* nuevaEspecialidad) {//hace lo mismo con la especialidad
     if (nuevaEspecialidad && strlen(nuevaEspecialidad) > 0 && strlen(nuevaEspecialidad) < sizeof(especialidad)) {
         strcpy(especialidad, nuevaEspecialidad);
         fechaModificacion = time(nullptr);
@@ -88,7 +88,7 @@ void Doctor::setEspecialidad(const char* nuevaEspecialidad) {
         cerr << "Error (Doctor): Especialidad inválida o muy larga." << endl;
     }
 }
-void Doctor::setAniosDeExperiencia(int anios) {
+void Doctor::setAniosDeExperiencia(int anios) { //hace lo mismo con la experiencia
     if (anios >= 0 && anios <= 70) { 
         aniosDeExperiencia = anios;
         fechaModificacion = time(nullptr);
@@ -97,7 +97,7 @@ void Doctor::setAniosDeExperiencia(int anios) {
     }
 }
 
-void Doctor::setCostoDeLaConsulta(float costo) {
+void Doctor::setCostoDeLaConsulta(float costo) { //hace lo mismo con el costo de la consulta
     // Se asume que el costo de la consulta debe ser positivo.
     if (costo >= 0.0f) { 
         costoDeLaConsulta = costo;
@@ -140,7 +140,7 @@ void Doctor::setDisponible(bool estado) {
 }
 
 //validacion de datos 
-
+//strlen cuanta cuantos caracterees tiene una cadena de texto
 //valida especialidad
 bool Doctor::especialidadEsValida() const {
     if (strlen(especialidad) == 0) return false; // Se asume una función de utilidad que verifica si la especialidad existe en la lista maestra.
@@ -159,25 +159,25 @@ bool Doctor::validarDatos() const {
 
 
 bool Doctor::agregarPacienteID(int pacienteID) {
-    if (cantidadPacientes < MAX_PACIENTES_ASIGNADOS && pacienteID > 0) {
+    if (cantidadPacientes < MAX_PACIENTES_ASIGNADOS && pacienteID > 0) { //verofoca e; espacio disponible
         // Evitar duplicados antes de agregar (opcional)
         
         pacientesIDs[cantidadPacientes++] = pacienteID;
         fechaModificacion = time(nullptr);
         return true;
-    }
+    }///verfica si tiene cupo pero si no tiene cupo no se agrega 
     return false;
 }
 
 bool Doctor::eliminarPacienteID(int pacienteID) {
-    int* inicio = pacientesIDs;
+    int* inicio = pacientesIDs;//define los limites
     int* fin = pacientesIDs + cantidadPacientes;
     
     //remove mueve el elemento a eliminar al final y retorna el nuevo final lógico
     int* nuevo_fin = remove(inicio, fin, pacienteID);
 
-    if (nuevo_fin != fin) { // Si algo fue removido
-        cantidadPacientes = nuevo_fin - inicio;
+    if (nuevo_fin != fin) { // berifica Si algo fue removido
+        cantidadPacientes = nuevo_fin - inicio; //se ajustan los datos del doctro
         fechaModificacion = time(nullptr);
         return true;
     }
@@ -185,7 +185,7 @@ bool Doctor::eliminarPacienteID(int pacienteID) {
 }
 
 bool Doctor::agregarCitaID(int citaID) {
-    if (cantidadCitas < MAX_CITAS_AGENDADAS && citaID > 0) {
+    if (cantidadCitas < MAX_CITAS_AGENDADAS && citaID > 0) { //verifica el cupo en la agenda y si el id es valido
         citasIDs[cantidadCitas++] = citaID;
         fechaModificacion = time(nullptr);
         return true;
