@@ -5,7 +5,7 @@
 
 using namespace std; 
 
-//constructor
+//constructor, lee da vida al proyecto
 OperadorPacientes::OperadorPacientes() 
     capacidadMaxima_(TAMANO_INICIAL), 
     cantidadActual_(0), 

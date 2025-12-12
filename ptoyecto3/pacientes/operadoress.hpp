@@ -9,6 +9,6 @@
 // Declaraciones de funciones de lógica de negocio
 void registrarPaciente(Hospital& hospital);
 Paciente buscarPacientePorID();
-// Declarar el resto de operaciones CRUD y flujos (modificar, eliminar, listar...)
+// Declarar el resto de operaciones CRque UD y flujos (modificar, eliminar, listar...)
 
 #endif

@@ -9,9 +9,9 @@
 
 
 #include "pacientes/operacionesPacientes.hpp"
-#include "doctores/operacionesDoctores.hpp"
-#include "citas/operacionesCitas.hpp"
-#include "historial/operacionesHistorial.hpp"
+#include "doctores.hpp"
+#include "citas.hpp"
+#include "historial.hpp"
 
 using namespace std;
 
@@ -31,18 +31,17 @@ int main() {
     
     // 2. Carga del Hospital (Metadata y Contadores)
     Hospital hospital;
-    
-    // Intenta cargar los datos del Hospital (ID, contadores) desde hospital.cfg
+
+    // Intenta cargar los datos del Hospital (ID, contadores) desde hospital
     if (!GestorArchivos::cargarHospital(hospital)) { 
          // Si la carga falla (archivo no existe), inicializa el sistema
-         hospital = Hospital("Hospital General URU", "Maracaibo", "555-1234");
+         hospital = Hospital("Hospital ", "Maracaibo", "555-1234");
          GestorArchivos::guardarHospital(hospital); // Guarda la versión inicial
          cout << "Datos iniciales del Hospital creados." << endl;
     } else {
          cout << "Datos del Hospital cargados desde archivo." << endl;
     }
 
-    // 3. Loop Principal: Se pasa la ÚNICA instancia de hospital por referencia
     menuPrincipal(hospital); 
 
     // 4. Guardar antes de salir
@@ -52,13 +51,11 @@ int main() {
     return 0;
 }
 
-
-// Muestra el menú principal y maneja la navegación.
 void menuPrincipal(Hospital& hospital) {
     int opcion = 0;
                        
     do {
-        system("cls || clear"); // Limpiar pantalla
+        system("cls"); 
         cout << "========================================" << endl;
         cout << "    SISTEMA DE GESTIÓN HOSPITALARIA     " << endl;
         cout << "========================================" << endl;
@@ -96,13 +93,10 @@ void menuPrincipal(Hospital& hospital) {
     } while (opcion != 0);
 }
 
-/**
- * @brief Muestra el submenú de pacientes y llama a las operaciones.
- */
 void menuPacientes(Hospital& hospital) {
     int opcion = 0;
     do {
-        system("cls || clear");
+        system("cls");
         cout << "========================================" << endl;
         cout << "       MENÚ: GESTIÓN DE PACIENTES       " << endl;
         cout << "========================================" << endl;
@@ -124,10 +118,10 @@ void menuPacientes(Hospital& hospital) {
 
         switch (opcion) {
             case 1: registrarPaciente(hospital); break;  // Llama a operacionesPacientes
-            case 2: modificarPaciente(); break;          // Llama a operacionesPacientes
-            case 3: buscarPaciente(); break;             // Llama a operacionesPacientes
-            case 4: listarPacientes(); break;            // Llama a operacionesPacientes
-            case 5: eliminarPaciente(); break;           // Llama a operacionesPacientes
+            case 2: modificarPaciente(); break;      
+            case 3: buscarPaciente(); break;            
+            case 4: listarPacientes(); break;            
+            case 5: eliminarPaciente(); break;           
             case 0: break;
             default: cout << "\nOpción no válida. Intente de nuevo.\n"; break;
         }
@@ -140,13 +134,10 @@ void menuPacientes(Hospital& hospital) {
     } while (opcion != 0);
 }
 
-/**
- * @brief Muestra el submenú de doctores y llama a las operaciones.
- */
 void menuDoctores(Hospital& hospital) {
     int opcion = 0;
     do {
-        system("cls || clear");
+        system("cls");
         cout << "========================================" << endl;
         cout << "       MENÚ: GESTIÓN DE DOCTORES        " << endl;
         cout << "========================================" << endl;
@@ -168,10 +159,10 @@ void menuDoctores(Hospital& hospital) {
 
         switch (opcion) {
             case 1: registrarDoctor(hospital); break;  // Llama a operacionesDoctores
-            case 2: modificarDoctor(); break;          // Llama a operacionesDoctores
-            case 3: buscarDoctor(); break;             // Llama a operacionesDoctores
-            case 4: listarDoctores(); break;           // Llama a operacionesDoctores
-            case 5: eliminarDoctor(); break;           // Llama a operacionesDoctores
+            case 2: modificarDoctor(); break;        
+            case 3: buscarDoctor(); break;            
+            case 4: listarDoctores(); break;          
+            case 5: eliminarDoctor(); break;          
             case 0: break;
             default: cout << "\nOpción no válida. Intente de nuevo.\n"; break;
         }
@@ -184,13 +175,11 @@ void menuDoctores(Hospital& hospital) {
     } while (opcion != 0);
 }
 
-/**
- * @brief Muestra el submenú de citas y llama a las operaciones.
- */
+
 void menuCitas(Hospital& hospital) {
     int opcion = 0;
     do {
-        system("cls || clear");
+        system("cls");
         cout << "========================================" << endl;
         cout << "     MENÚ: GESTIÓN DE CITAS MÉDICAS     " << endl;
         cout << "========================================" << endl;
@@ -211,9 +200,9 @@ void menuCitas(Hospital& hospital) {
 
         switch (opcion) {
             case 1: agendarCita(hospital); break; // Llama a operacionesCitas
-            case 2: cancelarCita(); break;       // Llama a operacionesCitas
-            case 3: modificarCita(); break;      // Llama a operacionesCitas
-            case 4: listarCitas(); break;        // Llama a operacionesCitas
+            case 2: cancelarCita(); break;       
+            case 3: modificarCita(); break;     
+            case 4: listarCitas(); break;     
             case 0: break;
             default: cout << "\nOpción no válida. Intente de nuevo.\n"; break;
         }
@@ -226,13 +215,10 @@ void menuCitas(Hospital& hospital) {
     } while (opcion != 0);
 }
 
-/**
- * @brief Muestra el submenú de historiales y llama a las operaciones.
- */
 void menuHistorial(Hospital& hospital) {
     int opcion = 0;
     do {
-        system("cls || clear");
+        system("cls");
         cout << "========================================" << endl;
         cout << " MENÚ: GESTIÓN DE HISTORIALES CLÍNICOS  " << endl;
         cout << "========================================" << endl;
@@ -253,9 +239,9 @@ void menuHistorial(Hospital& hospital) {
 
         switch (opcion) {
             case 1: crearHistorial(hospital); break;     // Llama a operacionesHistorial
-            case 2: agregarConsulta(); break;            // Llama a operacionesHistorial
-            case 3: buscarHistorial(); break;            // Llama a operacionesHistorial
-            case 4: listarHistoriales(); break;          // Llama a operacionesHistorial
+            case 2: agregarConsulta(); break;           
+            case 3: buscarHistorial(); break;           
+            case 4: listarHistoriales(); break;       
             case 0: break;
             default: cout << "\nOpción no válida. Intente de nuevo.\n"; break;
         }

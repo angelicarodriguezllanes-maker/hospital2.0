@@ -25,4 +25,4 @@ private:
     Validaciones() = delete; 
 };
 
-#endif // VALIDACIONES_HPP
+#endif // VALIDACIONES_HPP, cierra las estructuras condicionales

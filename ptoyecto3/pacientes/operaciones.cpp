@@ -12,11 +12,11 @@ void registrarPaciente(Hospital& hospital) {
     // 2. Crear instancia de la Entidad (responsabilidad de Paciente)
     Paciente nuevoPaciente(nuevoID, "","","", 0, "M", ""); // Constructor con parámetros
     
-    // 3. Obtener datos por consola...
+    // 3. Obtener datos por consola (estandar)
     // TODO: Usar cin para llenar los datos de nuevoPaciente
 
     // 4. Validar datos (responsabilidad de Paciente)
-    if (!nuevoPaciente.validarDatos()) { // Método de Paciente.hpp [cite: 231]
+    if (!nuevoPaciente.validarDatos()) { // Método de Paciente.hpp 
         cout << "Error: Los datos del paciente no son válidos." << endl;
         hospital.decrementarIDPaciente(); // Revertir el contador de ID
         return;

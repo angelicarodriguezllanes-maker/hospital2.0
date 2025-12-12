@@ -18,10 +18,7 @@ HistorialMedico::HistorialMedico(int idHistorial, int idPaciente, int idDoctor,
     this->tratamiento[199] = '\0';
 }
 
-// ------------------------------------
-// Getters (Implementación)
-// ------------------------------------
-
+//getters , metodo de acceso, lee o consulta
 int HistorialMedico::getIdHistorial() const { return idHistorial; }
 int HistorialMedico::getIdPaciente() const { return idPaciente; }
 const char* HistorialMedico::getFechaRegistro() const { return fechaRegistro; }
@@ -29,10 +26,7 @@ const char* HistorialMedico::getDiagnostico() const { return diagnostico; }
 const char* HistorialMedico::getTratamiento() const { return tratamiento; }
 int HistorialMedico::getIdDoctorTratante() const { return idDoctorTratante; }
 
-// ------------------------------------
-// Setters (Implementación)
-// ------------------------------------
-
+// Setters (Implementación), ESCRIBE
 void HistorialMedico::setIdHistorial(int id) { this->idHistorial = id; }
 void HistorialMedico::setIdPaciente(int id) { this->idPaciente = id; }
 void HistorialMedico::setFechaRegistro(const char* nuevaFecha) {
