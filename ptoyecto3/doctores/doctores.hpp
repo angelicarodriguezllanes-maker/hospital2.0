@@ -67,10 +67,10 @@ public:
     void setCedula(const char* nuevaCedula);
     void setEspecialidad(const char* nuevaEspecialidad);
     void setAniosDeExperiencia(int anios); // Validación: anios >= 0
-    void setCostoDeLaConsulta(float costo); [cite_start]// Validación: rango razonable [cite: 99]
+    void setCostoDeLaConsulta(float costo); // Validación: rango razonable
     void setHorarioAtencion(const char* horario);
     void setTelefono(const char* telefono);
-    void setEmail(const char* email); [cite_start]// Validación: formato válido de email [cite: 94]
+    void setEmail(const char* email); // Validación: formato válido de email [cite: 94]
     void setDisponible(bool estado);
 
     void setFechaCreacion(time_t fecha);

@@ -37,7 +37,7 @@ public: //el la concha, el usuario la puede cambiar directamente sin las reglas 
     void setFecha(const char* nuevaFecha);
     void setHora(const char* nuevaHora);
     void setMotivo(const char* nuevoMotivo);
-    void setCancelada(bool estado)
+    void setCancelada(bool estado);
 };
 
 #endif 

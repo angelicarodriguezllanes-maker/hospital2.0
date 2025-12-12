@@ -4,7 +4,7 @@
 // Incluimos la clase Hospital para actualizar sus contadores de IDs
 #include "../hospital/Hospital.hpp" 
 // Incluimos la clase Paciente para poder crear y modificar pacientes
-#include "Paciente.hpp" 
+#include "pacientes.hpp" 
 
 // Declaraciones de funciones de lógica de negocio
 void registrarPaciente(Hospital& hospital);

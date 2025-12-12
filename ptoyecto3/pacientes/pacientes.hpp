@@ -42,7 +42,7 @@ public: // pulpa del agucate
     void setEmail(const char* nuevoEmail);
 
     // Método de presentación
-   void Paciente::mostrarInformacionBasica() const {
+   void mostrarInformacionBasica() const {
     cout << "---------------------------------------" << std::endl;
     cout << "         DATOS BÁSICOS DEL PACIENTE    " << std::endl;
     cout << "---------------------------------------" << std::endl;

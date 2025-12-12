@@ -9,9 +9,9 @@
 #include "utilidades/Validaciones.hpp" // Para limpiar el buffer
 
 
-#include "pacientes/operacionesPacientes.hpp"
+#include "pacientes/operadoress.hpp"
 #include "doctores/doctores.hpp"
-#include "citas/citas.hpp"
+#include "cita/cita.hpp"
 #include "historial/historial.hpp"
 
 using namespace std;

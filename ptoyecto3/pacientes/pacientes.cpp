@@ -1,4 +1,4 @@
-#include "Paciente.hpp" // Incluye la declaración de la clase
+#include "paciente.hpp" // Incluye la declaración de la clase
 #include <iostream> 
 #include <cstring>  
 #include <cctype>

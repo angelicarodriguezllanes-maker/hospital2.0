@@ -11,11 +11,11 @@ private:
     
 public:
   //toma cualquier objeto determina su archivo y y escribe al final del archivo 
-    template <typename T>n// formula para funciones qeu guarda lo que sea 
-    static bool guardar(const T& entidad); 
+  // Asegúrate de que estas tres funciones sean estáticas
+  static void inicializarSistemaArchivos();
+  static bool cargarHospital(Hospital& hospital);
+  static void guardarHospital(Hospital& hospital);
 
-    template <typename T>
-    static T leerPorPosicion(long posicion); 
 };
 
 

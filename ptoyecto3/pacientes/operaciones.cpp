@@ -5,12 +5,12 @@
 
 using namespace std;
 
-void registrarPaciente(Hospital& hospital) {
+void registrarpaciente(Hospital& hospital) {
     // 1. Obtener nuevo ID desde el Hospital (responsabilidad del Hospital)
     int nuevoID = hospital.generarNuevoIDPaciente(); // Método de Hospital.hpp [cite: 213]
     
     // 2. Crear instancia de la Entidad (responsabilidad de Paciente)
-    Paciente nuevoPaciente(nuevoID, "","","", 0, "M", ""); // Constructor con parámetros
+    Paciente nuevopaciente(nuevoID, "","","", 0, "M", ""); // Constructor con parámetros
     
     // 3. Obtener datos por consola (estandar)
     // TODO: Usar cin para llenar los datos de nuevoPaciente
