@@ -1,4 +1,4 @@
-#include "HistorialMedico.hpp"
+#include "historial.hpp"
 #include <cstring>
 
 // Constructor

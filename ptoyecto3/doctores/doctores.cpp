@@ -1,4 +1,4 @@
-#include "Doctor.hpp"
+#include "doctores.hpp"
 #include <iostream>
 #include <algorithm> // tiene funciones y procesa datos  Para std::remove
 #include <cmath> 

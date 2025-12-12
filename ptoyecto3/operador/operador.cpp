@@ -1,4 +1,4 @@
-#include "OperadorPacientes.hpp" // "" para buscar adentro de los archivos 
+#include "operador.hpp" // "" para buscar adentro de los archivos 
 #include <iostream>
 #include <cstring>
 #include <cmath> // Para floor

@@ -1,7 +1,7 @@
-#include "Validaciones.hpp"
+#include "validaciones.hpp"
 #include <iostream>
 #include <limits> // Para numeric_limits
-
+#include <cstring>
 // Implementación de la validación de rango numérico
 bool Validaciones::validarRangoEntero(int valor, int min, int max) {
     return valor >= min && valor <= max;

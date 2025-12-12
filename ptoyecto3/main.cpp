@@ -10,9 +10,9 @@
 
 
 #include "pacientes/operadoress.hpp"
-#include "doctores/doctores.hpp"
-#include "cita/cita.hpp"
-#include "historial/historial.hpp"
+#include "doctores/operacionesdoctores.hpp"
+#include "cita/operacionescitas.hpp"
+#include "historial/operacioneshistorial.hpp"
 
 using namespace std;
 

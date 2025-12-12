@@ -94,5 +94,4 @@ public:
     //metodo para obtener el tamano del doctor
     static size_t obtenerTamano() { return sizeof(Doctor); }
 };
-
 #endif // DOCTOR_HPP
