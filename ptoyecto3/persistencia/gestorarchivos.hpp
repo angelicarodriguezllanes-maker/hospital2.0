@@ -19,6 +19,6 @@ public:
 };
 
 
-#include "GestorArchivos.cpp"  // se incluye popr el uso de plantillas
+//#include "GestorArchivos.cpp"  // se incluye popr el uso de plantillas
 
 #endif 

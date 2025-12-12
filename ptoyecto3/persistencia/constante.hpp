@@ -1,4 +1,4 @@
-ifndef CONSTANTES_HPP
+#ifndef CONSTANTES_HPP
 #define CONSTANTES_HPP
 
 namespace Constantes {

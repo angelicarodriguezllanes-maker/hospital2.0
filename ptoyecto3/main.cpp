@@ -4,14 +4,15 @@
 #include <cstdlib>  
 
 #include "hospital/Hospital.hpp"
-#include "persistencia/GestorArchivos.hpp" 
+#include "persistencia/constante.hpp"
+#include "persistencia/gestorarchivos.hpp" 
 #include "utilidades/Validaciones.hpp" // Para limpiar el buffer
 
 
 #include "pacientes/operacionesPacientes.hpp"
-#include "doctores.hpp"
-#include "citas.hpp"
-#include "historial.hpp"
+#include "doctores/doctores.hpp"
+#include "citas/citas.hpp"
+#include "historial/historial.hpp"
 
 using namespace std;
 

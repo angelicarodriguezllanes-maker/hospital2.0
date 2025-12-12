@@ -4,3 +4,25 @@
 
 // setters: Un setter es una función pública dentro de una clase que permite modificar el valor de una variable privada de ese objeto.
 // setter escritura, getter lectura
+
+//carpetas .cpp
+
+//pacientes
+//doctores
+//cita
+//historial
+//operadpr
+// oeraciones pacientea 
+//gestor de archivos 
+//main 
+
+//carpetas .hpp
+
+//cita
+//doctores
+//historial
+//hospital
+//operador
+//pacinetes5
+//gestor de archivos
+
